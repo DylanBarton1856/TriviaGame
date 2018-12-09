@@ -43,12 +43,61 @@ $("button").on('click', function () {
 
 // allow only one button selection per question.
 
+
+
+//hide questions until start is clicked!
+
+
+
 // submit button
+
 
 
 // countdown timer
 
+var clockRunning = false;
+var time = 60;
 
+$('#start').on('click', start);
+$("#display").text("01:00");
+
+// set clock to running
+function start() {
+	if (!clockRunning) {
+		intervalId = setInterval(count, 1000);
+		clockRunning = true;
+	}
+}
+
+var converted = timeConverter(time);
+
+function count() {
+	//allow time to deduct
+	time--;
+
+	// turn current time into converted variable
+	var converted = timeConverter(time);
+	console.log(converted);
+
+	// Show the converted time in the "display" div.
+	$("#display").text(converted);
+}
+function timeConverter(t) {
+
+	var minutes = Math.floor(t / 60);
+	var seconds = t - (minutes * 60);
+
+	if (seconds < 10) {
+		seconds = "0" + seconds;
+	}
+	if (minutes === 0) {
+		minutes = "00";
+	}
+	else if (minutes < 10) {
+		minutes = "0" + minutes;
+	}
+	return minutes + ":" + seconds;
+}
 
 // compare user choice to correct answer
 
