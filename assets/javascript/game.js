@@ -1,13 +1,3 @@
-// * You'll create a trivia form with multiple choice or true/false options (your choice).
-
-// * The player will have a limited amount of time to finish the quiz. 
-
-//   * The game ends when the time runs out. The page will reveal the number of questions that players answer correctly and incorrectly.
-
-// * Don't let the player pick more than one answer per question.
-
-// * Don't forget to include a countdown timer.
-
 // questions and answer choices
 var answersChosen = [];
 var questions = [
@@ -25,21 +15,23 @@ var questions = [
 // console.log(questions);
 
 // adding questions to DOM
-function gameStart() {
+function questionDis() {
 	$('#q1').prepend(questions[0].q1 + '<br>' + '<br>');
 	$('#q2').prepend(questions[1].q2 + '<br>' + '<br>');
 }
 
 // turning answer choices into buttons, display on DOM
+function answerDis(){
 for (var i = 0; i < 4; i++) {
 	$('#q1').append("<button>" + questions[0].a1[i]);
 	$('#q2').append("<button>" + questions[1].a2[i]);
 }
+
 // register button clicks.
 $("button").on('click', function () {
 	console.log(this.innerText);
 })
-
+}
 // allow only one button selection per question.
 
 
@@ -109,5 +101,5 @@ function gameEnd() {
 }
 
 
-
-gameStart();
+questionDis()
+answerDis()
