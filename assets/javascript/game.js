@@ -1,5 +1,5 @@
 // questions and answer choices
-var answersChosen = [];
+// var answersChosen = [];
 var questions = [
 	{
 		q1: "Which of these engines came equipped in the USDM Nissan 240SX?",
@@ -12,6 +12,8 @@ var questions = [
 		c2: '1995'
 	}
 ];
+
+$(document).ready(function() {
 // console.log(questions);
 
 // adding questions to DOM
@@ -21,17 +23,22 @@ function questionDis() {
 }
 
 // turning answer choices into buttons, display on DOM
-function answerDis(){
-for (var i = 0; i < 4; i++) {
-	$('#q1').append("<button>" + questions[0].a1[i]);
-	$('#q2').append("<button>" + questions[1].a2[i]);
+function answerDis() {
+	$('#q1').append("<input type='radio' name='a1' value='1'/>" + questions[0].a1[0]);
+	$('#q2').append("<input type='radio' name='a2' value='1'/>" + questions[1].a2[0]);
+	for (var i = 1; i < 4; i++) {
+		// $('#q1').append("<button>" + questions[0].a1[i]);
+		// $('#q2').append("<button>" + questions[1].a2[i]);
+		$('#q1').append("<input type='radio' name='a1' value ='2'/>" + questions[0].a1[i]);
+		$('#q2').append("<input type='radio' name='a2' value ='2'/>" + questions[1].a2[i]);
+	}
+
+	// register button clicks.
+	// $("button").on('click', function () {
+	// 	console.log(this.innerText);
+	// })
 }
 
-// register button clicks.
-$("button").on('click', function () {
-	console.log(this.innerText);
-})
-}
 // allow only one button selection per question.
 
 
@@ -41,7 +48,9 @@ $("button").on('click', function () {
 
 
 // submit button
-
+$('#submit').on('click', function(){
+	gameEnd();
+})
 
 
 // countdown timer
@@ -96,10 +105,14 @@ function timeConverter(t) {
 }
 
 //game end, compare user choice to correct answers
-function gameEnd() {
-
+	function gameEnd() {
+	var value1 = $("input[name='a1']:checked").val();
+	var value2 = $("input[name='a2']:checked").val();
+	console.log(value1);
+	console.log(value2);
 }
 
 
 questionDis()
 answerDis()
+})
