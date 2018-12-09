@@ -26,7 +26,6 @@ var questions = [
 
 // adding questions to DOM
 function gameStart() {
-	// $(".quizHolder").text(JSON.stringify(questions[0].question));
 	$('#q1').prepend(questions[0].q1 + '<br>' + '<br>');
 	$('#q2').prepend(questions[1].q2 + '<br>' + '<br>');
 }
@@ -81,7 +80,12 @@ function count() {
 
 	// Show the converted time in the "display" div.
 	$("#display").text(converted);
+
+	if (time === 0) {
+		gameEnd()
+	}
 }
+
 function timeConverter(t) {
 
 	var minutes = Math.floor(t / 60);
@@ -99,11 +103,10 @@ function timeConverter(t) {
 	return minutes + ":" + seconds;
 }
 
-// compare user choice to correct answer
+//game end, compare user choice to correct answers
+function gameEnd() {
 
-
-
-// game reset
+}
 
 
 
